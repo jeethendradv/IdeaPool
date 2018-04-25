@@ -1,0 +1,23 @@
+﻿@model IMS.IdeaPool.Notification.Models.IdeaUpdatedModel
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Idea updated</title>
+</head>
+<body>
+    *** This is an automatically generated email, please do not reply ***
+    <br />
+    <br />
+    Hi,
+    <br />
+    <br />
+    @Model.FullName has updated his/her idea with the below reason.&nbsp;To view the idea <a href="@Model.Url">Click Here</a>.
+    <br />
+    <br />
+    <b>Reason: </b> @Model.Reason
+    <br />
+    <br />
+    Thanks
+</body>
+</html>

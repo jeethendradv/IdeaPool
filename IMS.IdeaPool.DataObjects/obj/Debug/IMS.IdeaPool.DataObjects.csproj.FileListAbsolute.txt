@@ -1,0 +1,10 @@
+H:\Projects\i-Gen\Code\Hynds.IdeaGenerator.DataObjects\bin\Debug\IMS.IdeaPool.DataObjects.dll
+H:\Projects\i-Gen\Code\Hynds.IdeaGenerator.DataObjects\bin\Debug\IMS.IdeaPool.DataObjects.pdb
+H:\Projects\i-Gen\Code\Hynds.IdeaGenerator.DataObjects\obj\Debug\IMS.IdeaPool.DataObjects.csproj.CoreCompileInputs.cache
+H:\Projects\i-Gen\Code\Hynds.IdeaGenerator.DataObjects\obj\Debug\IMS.IdeaPool.DataObjects.dll
+H:\Projects\i-Gen\Code\Hynds.IdeaGenerator.DataObjects\obj\Debug\IMS.IdeaPool.DataObjects.pdb
+H:\Projects\i-Gen\Code\IMS.IdeaPool.DataObjects\bin\Debug\IMS.IdeaPool.DataObjects.dll
+H:\Projects\i-Gen\Code\IMS.IdeaPool.DataObjects\bin\Debug\IMS.IdeaPool.DataObjects.pdb
+H:\Projects\i-Gen\Code\IMS.IdeaPool.DataObjects\obj\Debug\IMS.IdeaPool.DataObjects.csproj.CoreCompileInputs.cache
+H:\Projects\i-Gen\Code\IMS.IdeaPool.DataObjects\obj\Debug\IMS.IdeaPool.DataObjects.dll
+H:\Projects\i-Gen\Code\IMS.IdeaPool.DataObjects\obj\Debug\IMS.IdeaPool.DataObjects.pdb

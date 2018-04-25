@@ -1,0 +1,5 @@
+H:\Projects\i-Gen\Code\Hynds.IdeaGenerator.DataObjects\bin\Debug\IMS.IdeaGenerator.DataObjects.dll
+H:\Projects\i-Gen\Code\Hynds.IdeaGenerator.DataObjects\bin\Debug\IMS.IdeaGenerator.DataObjects.pdb
+H:\Projects\i-Gen\Code\Hynds.IdeaGenerator.DataObjects\obj\Debug\IMS.IdeaGenerator.DataObjects.csproj.CoreCompileInputs.cache
+H:\Projects\i-Gen\Code\Hynds.IdeaGenerator.DataObjects\obj\Debug\IMS.IdeaGenerator.DataObjects.dll
+H:\Projects\i-Gen\Code\Hynds.IdeaGenerator.DataObjects\obj\Debug\IMS.IdeaGenerator.DataObjects.pdb

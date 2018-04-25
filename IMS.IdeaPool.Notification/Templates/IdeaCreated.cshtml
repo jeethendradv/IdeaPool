@@ -1,0 +1,20 @@
+﻿@model IMS.IdeaPool.Notification.Models.IdeaSubmittedModel
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>New Idea submitted</title>
+</head>
+<body>
+    *** This is an automatically generated email, please do not reply ***
+    <br />
+    <br />
+    Hi,
+    <br />
+    <br />
+    @Model.CreatedBy has submitted a new Idea.&nbsp;To view the idea <a href="@Model.ViewIdeaUrl">Click Here</a>.
+    <br />
+    <br />
+    Thanks
+</body>
+</html>

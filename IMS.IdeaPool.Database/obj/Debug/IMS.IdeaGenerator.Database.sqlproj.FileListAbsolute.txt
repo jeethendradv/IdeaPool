@@ -1,0 +1,9 @@
+H:\Projects\i-Gen\Code\Hynds.IdeaGenerator.Database\bin\Debug\IMS.IdeaGenerator.Database.dacpac
+H:\Projects\i-Gen\Code\Hynds.IdeaGenerator.Database\bin\Debug\IMS.IdeaGenerator.Database.dll
+H:\Projects\i-Gen\Code\Hynds.IdeaGenerator.Database\bin\Debug\IMS.IdeaGenerator.Database.pdb
+H:\Projects\i-Gen\Code\Hynds.IdeaGenerator.Database\obj\Debug\IMS.IdeaGenerator.Database.dll
+H:\Projects\i-Gen\Code\Hynds.IdeaGenerator.Database\obj\Debug\IMS.IdeaGenerator.Database.pdb
+H:\Projects\i-Gen\Code\Hynds.IdeaGenerator.Database\obj\Debug\Model.xml
+H:\Projects\i-Gen\Code\Hynds.IdeaGenerator.Database\obj\Debug\refactor.xml
+H:\Projects\i-Gen\Code\Hynds.IdeaGenerator.Database\obj\Debug\postdeploy.sql
+H:\Projects\i-Gen\Code\Hynds.IdeaGenerator.Database\obj\Debug\predeploy.sql

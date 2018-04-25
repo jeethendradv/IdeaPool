@@ -1,0 +1,15 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+.vs
+packages
+TestResults
+IMS.IdeaPool.Data/bin
+IMS.IdeaPool.Database/bin
+IMS.IdeaPool.DataObjects/bin
+IMS.IdeaPool.Notification/bin
+IMS.IdeaPool.Process/bin
+IMS.IdeaPool.Process.Tests/bin
+IMS.IdeaPool.Web/bin
+IMS.IdeaPool.Web/node_modules

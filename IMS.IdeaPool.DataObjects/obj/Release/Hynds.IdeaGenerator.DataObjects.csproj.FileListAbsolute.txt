@@ -1,0 +1,5 @@
+C:\Idea Generator\Code\Hynds.IdeaGenerator.Web.V2\Hynds.IdeaGenerator.DataObjects\bin\Release\Hynds.IdeaGenerator.DataObjects.dll
+C:\Idea Generator\Code\Hynds.IdeaGenerator.Web.V2\Hynds.IdeaGenerator.DataObjects\bin\Release\Hynds.IdeaGenerator.DataObjects.pdb
+C:\Idea Generator\Code\Hynds.IdeaGenerator.Web.V2\Hynds.IdeaGenerator.DataObjects\obj\Release\Hynds.IdeaGenerator.DataObjects.csproj.CoreCompileInputs.cache
+C:\Idea Generator\Code\Hynds.IdeaGenerator.Web.V2\Hynds.IdeaGenerator.DataObjects\obj\Release\Hynds.IdeaGenerator.DataObjects.dll
+C:\Idea Generator\Code\Hynds.IdeaGenerator.Web.V2\Hynds.IdeaGenerator.DataObjects\obj\Release\Hynds.IdeaGenerator.DataObjects.pdb

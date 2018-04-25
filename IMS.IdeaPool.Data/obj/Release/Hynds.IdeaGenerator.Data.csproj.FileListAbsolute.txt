@@ -1,0 +1,13 @@
+C:\Idea Generator\Code\Hynds.IdeaGenerator.Web.V2\Hynds.IdeaGenerator.Data\bin\Release\Hynds.IdeaGenerator.Data.dll.config
+C:\Idea Generator\Code\Hynds.IdeaGenerator.Web.V2\Hynds.IdeaGenerator.Data\bin\Release\Hynds.IdeaGenerator.Data.dll
+C:\Idea Generator\Code\Hynds.IdeaGenerator.Web.V2\Hynds.IdeaGenerator.Data\bin\Release\Hynds.IdeaGenerator.Data.pdb
+C:\Idea Generator\Code\Hynds.IdeaGenerator.Web.V2\Hynds.IdeaGenerator.Data\bin\Release\EntityFramework.dll
+C:\Idea Generator\Code\Hynds.IdeaGenerator.Web.V2\Hynds.IdeaGenerator.Data\bin\Release\EntityFramework.SqlServer.dll
+C:\Idea Generator\Code\Hynds.IdeaGenerator.Web.V2\Hynds.IdeaGenerator.Data\bin\Release\Hynds.IdeaGenerator.DataObjects.dll
+C:\Idea Generator\Code\Hynds.IdeaGenerator.Web.V2\Hynds.IdeaGenerator.Data\bin\Release\Hynds.IdeaGenerator.DataObjects.pdb
+C:\Idea Generator\Code\Hynds.IdeaGenerator.Web.V2\Hynds.IdeaGenerator.Data\bin\Release\EntityFramework.xml
+C:\Idea Generator\Code\Hynds.IdeaGenerator.Web.V2\Hynds.IdeaGenerator.Data\bin\Release\EntityFramework.SqlServer.xml
+C:\Idea Generator\Code\Hynds.IdeaGenerator.Web.V2\Hynds.IdeaGenerator.Data\obj\Release\Hynds.IdeaGenerator.Data.csprojResolveAssemblyReference.cache
+C:\Idea Generator\Code\Hynds.IdeaGenerator.Web.V2\Hynds.IdeaGenerator.Data\obj\Release\Hynds.IdeaGenerator.Data.csproj.CoreCompileInputs.cache
+C:\Idea Generator\Code\Hynds.IdeaGenerator.Web.V2\Hynds.IdeaGenerator.Data\obj\Release\Hynds.IdeaGenerator.Data.dll
+C:\Idea Generator\Code\Hynds.IdeaGenerator.Web.V2\Hynds.IdeaGenerator.Data\obj\Release\Hynds.IdeaGenerator.Data.pdb

@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Login";
+}
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Idea Generator</title>
+    <link rel="stylesheet" type="text/css" href="~/Scripts/dist/libraries/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="~/Scripts/dist/libraries/react-notifications/react-notifications.css" />
+    <link rel="stylesheet" type="text/css" href="~/Scripts/dist/libraries/jquery-ui/jquery-ui.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/Scripts/dist/libraries/jquery-ui/jquery-ui.structure.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/Scripts/dist/libraries/jquery-ui/jquery-ui.theme.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/Scripts/dist/libraries/p-loading/p-loading.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/site.css" />
+</head>
+<body>
+    <div id="root">        
+    </div>
+    <script type="text/javascript" src="~/Scripts/dist/libraries/require.js?id=@DateTime.Now.ToString()"></script>
+    <script>
+        requirejs(['@(Request.ApplicationPath)Scripts/dist/requirejsconfig.js'], function () {
+            requirejs(['jquery'], function () {
+                requirejs(['login/Index', 'component/ErrorHelper', 'component/FeatureKeys']);
+            });            
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e858083df17c4bdca9adfa11df673b11" Name="Diagram1">
+        <EntityTypeShape EntityType="IMS.IdeaPool.Data.Activity" Width="1.5" PointX="8.25" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMS.IdeaPool.Data.Audit" Width="1.5" PointX="7.5" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMS.IdeaPool.Data.AuditType" Width="1.5" PointX="5.25" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMS.IdeaPool.Data.Discussion" Width="1.5" PointX="10.5" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMS.IdeaPool.Data.Exception" Width="1.5" PointX="7.5" PointY="18.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMS.IdeaPool.Data.Feature" Width="1.5" PointX="0.75" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMS.IdeaPool.Data.FieldOfWater" Width="1.5" PointX="7.5" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMS.IdeaPool.Data.File" Width="1.5" PointX="12" PointY="26.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMS.IdeaPool.Data.ForgotPassword" Width="1.5" PointX="7.5" PointY="25.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMS.IdeaPool.Data.IdeaHistory" Width="1.5" PointX="10.5" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMS.IdeaPool.Data.Idea" Width="1.5" PointX="9.75" PointY="25.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMS.IdeaPool.Data.IdeasFieldOfWater" Width="1.5" PointX="9.75" PointY="22.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMS.IdeaPool.Data.Login" Width="1.5" PointX="4.625" PointY="28.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMS.IdeaPool.Data.Role" Width="1.5" PointX="3" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMS.IdeaPool.Data.Setting" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMS.IdeaPool.Data.SettingsGroup" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMS.IdeaPool.Data.UnReadDiscussion" Width="1.5" PointX="12" PointY="22" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMS.IdeaPool.Data.User" Width="1.5" PointX="5.25" PointY="16.125" IsExpanded="true" />
+        <AssociationConnector Association="IMS.IdeaPool.Data.FK_IdeaHistory_Activity" ManuallyRouted="false" />
+        <AssociationConnector Association="IMS.IdeaPool.Data.FK_Audit_AuditType" ManuallyRouted="false" />
+        <AssociationConnector Association="IMS.IdeaPool.Data.FK_Audit_Ideas" ManuallyRouted="false" />
+        <AssociationConnector Association="IMS.IdeaPool.Data.FK_Audit_User_LoginUserId" ManuallyRouted="false" />
+        <AssociationConnector Association="IMS.IdeaPool.Data.FK_Audit_User_UpdateUserId" ManuallyRouted="false" />
+        <AssociationConnector Association="IMS.IdeaPool.Data.FK_Discussion_Files" ManuallyRouted="false" />
+        <AssociationConnector Association="IMS.IdeaPool.Data.FK_Discussion_Ideas" ManuallyRouted="false" />
+        <AssociationConnector Association="IMS.IdeaPool.Data.FK_Discussion_User" ManuallyRouted="false" />
+        <AssociationConnector Association="IMS.IdeaPool.Data.FK_Exceptions_User" ManuallyRouted="false" />
+        <AssociationConnector Association="IMS.IdeaPool.Data.FK_FieldOfWater_User" ManuallyRouted="false" />
+        <AssociationConnector Association="IMS.IdeaPool.Data.FK_IdeasFieldOfWaters_FieldOfWater" ManuallyRouted="false" />
+        <AssociationConnector Association="IMS.IdeaPool.Data.FK_Files_Ideas" ManuallyRouted="false" />
+        <AssociationConnector Association="IMS.IdeaPool.Data.FK_ForgotPassword_User" ManuallyRouted="false" />
+        <AssociationConnector Association="IMS.IdeaPool.Data.FK_IdeaHistory_Ideas" ManuallyRouted="false" />
+        <AssociationConnector Association="IMS.IdeaPool.Data.FK_IdeaHistory_User" ManuallyRouted="false" />
+        <AssociationConnector Association="IMS.IdeaPool.Data.FK_Ideas_User" ManuallyRouted="false" />
+        <AssociationConnector Association="IMS.IdeaPool.Data.FK_IdeasFieldOfWaters_Ideas" ManuallyRouted="false" />
+        <AssociationConnector Association="IMS.IdeaPool.Data.FK_UnReadDiscussions_Ideas" ManuallyRouted="false" />
+        <AssociationConnector Association="IMS.IdeaPool.Data.FK_Login_User" ManuallyRouted="false" />
+        <AssociationConnector Association="IMS.IdeaPool.Data.FK_Settings_SettingsGroup" ManuallyRouted="false" />
+        <AssociationConnector Association="IMS.IdeaPool.Data.FK_UnReadDiscussions_User" ManuallyRouted="false" />
+        <AssociationConnector Association="IMS.IdeaPool.Data.RoleFeatures" ManuallyRouted="false" />
+        <AssociationConnector Association="IMS.IdeaPool.Data.UserRoles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="IMS.IdeaPool.Data.IdeaStatus" Width="1.5" PointX="7.5" PointY="28.125" />
+        <AssociationConnector Association="IMS.IdeaPool.Data.FK_Ideas_IdeaStatus" />
+        <AssociationConnector Association="IMS.IdeaPool.Data.FK_IdeaStatus_User" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

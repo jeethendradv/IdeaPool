@@ -1,0 +1,14 @@
+H:\Projects\i-Gen\Code\Hynds.IdeaGenerator.Database\bin\Debug\IMS.IdeaPool.Database.dacpac
+H:\Projects\i-Gen\Code\Hynds.IdeaGenerator.Database\bin\Debug\IMS.IdeaPool.Database.dll
+H:\Projects\i-Gen\Code\Hynds.IdeaGenerator.Database\bin\Debug\IMS.IdeaPool.Database.pdb
+H:\Projects\i-Gen\Code\Hynds.IdeaGenerator.Database\obj\Debug\Model.xml
+H:\Projects\i-Gen\Code\Hynds.IdeaGenerator.Database\obj\Debug\refactor.xml
+H:\Projects\i-Gen\Code\Hynds.IdeaGenerator.Database\obj\Debug\postdeploy.sql
+H:\Projects\i-Gen\Code\Hynds.IdeaGenerator.Database\obj\Debug\predeploy.sql
+H:\Projects\i-Gen\Code\Hynds.IdeaGenerator.Database\obj\Debug\IMS.IdeaPool.Database.dll
+H:\Projects\i-Gen\Code\Hynds.IdeaGenerator.Database\obj\Debug\IMS.IdeaPool.Database.pdb
+H:\Projects\i-Gen\Code\IMS.IdeaPool.Database\bin\Debug\IMS.IdeaPool.Database.dacpac
+H:\Projects\i-Gen\Code\IMS.IdeaPool.Database\bin\Debug\IMS.IdeaPool.Database.dll
+H:\Projects\i-Gen\Code\IMS.IdeaPool.Database\bin\Debug\IMS.IdeaPool.Database.pdb
+H:\Projects\i-Gen\Code\IMS.IdeaPool.Database\obj\Debug\IMS.IdeaPool.Database.dll
+H:\Projects\i-Gen\Code\IMS.IdeaPool.Database\obj\Debug\IMS.IdeaPool.Database.pdb

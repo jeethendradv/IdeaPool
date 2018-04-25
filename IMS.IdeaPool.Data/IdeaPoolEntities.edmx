@@ -1,0 +1,1607 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="IMS.IdeaPool.Data.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Activity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Key" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Audit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeId" Type="int" Nullable="false" />
+          <Property Name="LoginUserId" Type="int" Nullable="false" />
+          <Property Name="IdeaId" Type="int" />
+          <Property Name="Description" Type="nvarchar" MaxLength="501" />
+          <Property Name="UpdateUserId" Type="int" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AuditType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Key" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Discussion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdeaId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Message" Type="nvarchar" MaxLength="250" />
+          <Property Name="FileId" Type="int" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Exceptions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Message" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="CallStack" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UserAgent" Type="nvarchar" MaxLength="500" />
+          <Property Name="ExceptionType" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Features">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Key" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FieldOfWater">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Order" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedByUserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Files">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="ContentType" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Content" Type="varbinary(max)" Nullable="false" />
+          <Property Name="Thumbnail" Type="varbinary(max)" Nullable="false" />
+          <Property Name="SizeInKb" Type="float" Nullable="false" />
+          <Property Name="UniqueID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IdeaId" Type="int" Nullable="false" />
+          <Property Name="IsUploadedViaDiscussions" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ForgotPassword">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Token" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="ExpiryDateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IdeaHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdeaId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="ActivityId" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ideas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UniqueId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="HtmlContent" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PlainContent" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdated" Type="datetime" Nullable="false" />
+          <Property Name="IdeaStatusId" Type="int" Nullable="false" />
+          <Property Name="IsDraft" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IdeasFieldOfWaters">
+          <Key>
+            <PropertyRef Name="IdeaId" />
+            <PropertyRef Name="FieldOfWaterId" />
+          </Key>
+          <Property Name="IdeaId" Type="int" Nullable="false" />
+          <Property Name="FieldOfWaterId" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="IdeaStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Key" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Color" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsVisible" Type="bit" Nullable="false" />
+          <Property Name="CreatedByUserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastLogin" Type="datetime" />
+          <Property Name="IsActivated" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RoleFeatures">
+          <Key>
+            <PropertyRef Name="RoleId" />
+            <PropertyRef Name="FeatureId" />
+          </Key>
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="FeatureId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Key" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Settings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Key" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Value" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="GroupId" Type="int" Nullable="false" />
+          <Property Name="Limit" Type="varchar" MaxLength="50" />
+          <Property Name="Type" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SettingsGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Key" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UnReadDiscussions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="IdeaId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Company" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Phone" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="IsSubscriptionEnabled" Type="bit" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Audit_AuditType">
+          <End Role="AuditType" Type="Self.AuditType" Multiplicity="1" />
+          <End Role="Audit" Type="Self.Audit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AuditType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Audit">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Audit_Ideas">
+          <End Role="Ideas" Type="Self.Ideas" Multiplicity="0..1" />
+          <End Role="Audit" Type="Self.Audit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ideas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Audit">
+              <PropertyRef Name="IdeaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Audit_User_LoginUserId">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Audit" Type="Self.Audit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Audit">
+              <PropertyRef Name="LoginUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Audit_User_UpdateUserId">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Audit" Type="Self.Audit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Audit">
+              <PropertyRef Name="UpdateUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Discussion_Files">
+          <End Role="Files" Type="Self.Files" Multiplicity="0..1" />
+          <End Role="Discussion" Type="Self.Discussion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Files">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Discussion">
+              <PropertyRef Name="FileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Discussion_Ideas">
+          <End Role="Ideas" Type="Self.Ideas" Multiplicity="1" />
+          <End Role="Discussion" Type="Self.Discussion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ideas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Discussion">
+              <PropertyRef Name="IdeaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Discussion_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Discussion" Type="Self.Discussion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Discussion">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Exceptions_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Exceptions" Type="Self.Exceptions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Exceptions">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FieldOfWater_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="FieldOfWater" Type="Self.FieldOfWater" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FieldOfWater">
+              <PropertyRef Name="CreatedByUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Files_Ideas">
+          <End Role="Ideas" Type="Self.Ideas" Multiplicity="1" />
+          <End Role="Files" Type="Self.Files" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ideas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Files">
+              <PropertyRef Name="IdeaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ForgotPassword_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="ForgotPassword" Type="Self.ForgotPassword" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ForgotPassword">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IdeaHistory_Activity">
+          <End Role="Activity" Type="Self.Activity" Multiplicity="1" />
+          <End Role="IdeaHistory" Type="Self.IdeaHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Activity">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="IdeaHistory">
+              <PropertyRef Name="ActivityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IdeaHistory_Ideas">
+          <End Role="Ideas" Type="Self.Ideas" Multiplicity="1" />
+          <End Role="IdeaHistory" Type="Self.IdeaHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ideas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="IdeaHistory">
+              <PropertyRef Name="IdeaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IdeaHistory_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="IdeaHistory" Type="Self.IdeaHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="IdeaHistory">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ideas_IdeaStatus">
+          <End Role="IdeaStatus" Type="Self.IdeaStatus" Multiplicity="1" />
+          <End Role="Ideas" Type="Self.Ideas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IdeaStatus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ideas">
+              <PropertyRef Name="IdeaStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ideas_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Ideas" Type="Self.Ideas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ideas">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IdeasFieldOfWaters_FieldOfWater">
+          <End Role="FieldOfWater" Type="Self.FieldOfWater" Multiplicity="1" />
+          <End Role="IdeasFieldOfWaters" Type="Self.IdeasFieldOfWaters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FieldOfWater">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="IdeasFieldOfWaters">
+              <PropertyRef Name="FieldOfWaterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IdeasFieldOfWaters_Ideas">
+          <End Role="Ideas" Type="Self.Ideas" Multiplicity="1" />
+          <End Role="IdeasFieldOfWaters" Type="Self.IdeasFieldOfWaters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ideas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="IdeasFieldOfWaters">
+              <PropertyRef Name="IdeaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IdeaStatus_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="IdeaStatus" Type="Self.IdeaStatus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="IdeaStatus">
+              <PropertyRef Name="CreatedByUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Login_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Login" Type="Self.Login" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Login">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleFeatures_Features">
+          <End Role="Features" Type="Self.Features" Multiplicity="1" />
+          <End Role="RoleFeatures" Type="Self.RoleFeatures" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Features">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RoleFeatures">
+              <PropertyRef Name="FeatureId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleFeatures_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="RoleFeatures" Type="Self.RoleFeatures" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RoleFeatures">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Settings_SettingsGroup">
+          <End Role="SettingsGroup" Type="Self.SettingsGroup" Multiplicity="1" />
+          <End Role="Settings" Type="Self.Settings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SettingsGroup">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Settings">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UnReadDiscussions_Ideas">
+          <End Role="Ideas" Type="Self.Ideas" Multiplicity="1" />
+          <End Role="UnReadDiscussions" Type="Self.UnReadDiscussions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ideas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UnReadDiscussions">
+              <PropertyRef Name="IdeaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UnReadDiscussions_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UnReadDiscussions" Type="Self.UnReadDiscussions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UnReadDiscussions">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoles_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoles_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="IMSIdeaPoolDataStoreContainer">
+          <EntitySet Name="Activity" EntityType="Self.Activity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Audit" EntityType="Self.Audit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AuditType" EntityType="Self.AuditType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Discussion" EntityType="Self.Discussion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Exceptions" EntityType="Self.Exceptions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Features" EntityType="Self.Features" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FieldOfWater" EntityType="Self.FieldOfWater" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Files" EntityType="Self.Files" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ForgotPassword" EntityType="Self.ForgotPassword" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IdeaHistory" EntityType="Self.IdeaHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ideas" EntityType="Self.Ideas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IdeasFieldOfWaters" EntityType="Self.IdeasFieldOfWaters" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IdeaStatus" EntityType="Self.IdeaStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoleFeatures" EntityType="Self.RoleFeatures" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Settings" EntityType="Self.Settings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SettingsGroup" EntityType="Self.SettingsGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UnReadDiscussions" EntityType="Self.UnReadDiscussions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRoles" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Audit_AuditType" Association="Self.FK_Audit_AuditType">
+            <End Role="AuditType" EntitySet="AuditType" />
+            <End Role="Audit" EntitySet="Audit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Audit_Ideas" Association="Self.FK_Audit_Ideas">
+            <End Role="Ideas" EntitySet="Ideas" />
+            <End Role="Audit" EntitySet="Audit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Audit_User_LoginUserId" Association="Self.FK_Audit_User_LoginUserId">
+            <End Role="User" EntitySet="User" />
+            <End Role="Audit" EntitySet="Audit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Audit_User_UpdateUserId" Association="Self.FK_Audit_User_UpdateUserId">
+            <End Role="User" EntitySet="User" />
+            <End Role="Audit" EntitySet="Audit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Discussion_Files" Association="Self.FK_Discussion_Files">
+            <End Role="Files" EntitySet="Files" />
+            <End Role="Discussion" EntitySet="Discussion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Discussion_Ideas" Association="Self.FK_Discussion_Ideas">
+            <End Role="Ideas" EntitySet="Ideas" />
+            <End Role="Discussion" EntitySet="Discussion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Discussion_User" Association="Self.FK_Discussion_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Discussion" EntitySet="Discussion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Exceptions_User" Association="Self.FK_Exceptions_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Exceptions" EntitySet="Exceptions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FieldOfWater_User" Association="Self.FK_FieldOfWater_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="FieldOfWater" EntitySet="FieldOfWater" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Files_Ideas" Association="Self.FK_Files_Ideas">
+            <End Role="Ideas" EntitySet="Ideas" />
+            <End Role="Files" EntitySet="Files" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ForgotPassword_User" Association="Self.FK_ForgotPassword_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="ForgotPassword" EntitySet="ForgotPassword" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IdeaHistory_Activity" Association="Self.FK_IdeaHistory_Activity">
+            <End Role="Activity" EntitySet="Activity" />
+            <End Role="IdeaHistory" EntitySet="IdeaHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IdeaHistory_Ideas" Association="Self.FK_IdeaHistory_Ideas">
+            <End Role="Ideas" EntitySet="Ideas" />
+            <End Role="IdeaHistory" EntitySet="IdeaHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IdeaHistory_User" Association="Self.FK_IdeaHistory_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="IdeaHistory" EntitySet="IdeaHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ideas_IdeaStatus" Association="Self.FK_Ideas_IdeaStatus">
+            <End Role="IdeaStatus" EntitySet="IdeaStatus" />
+            <End Role="Ideas" EntitySet="Ideas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ideas_User" Association="Self.FK_Ideas_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Ideas" EntitySet="Ideas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IdeasFieldOfWaters_FieldOfWater" Association="Self.FK_IdeasFieldOfWaters_FieldOfWater">
+            <End Role="FieldOfWater" EntitySet="FieldOfWater" />
+            <End Role="IdeasFieldOfWaters" EntitySet="IdeasFieldOfWaters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IdeasFieldOfWaters_Ideas" Association="Self.FK_IdeasFieldOfWaters_Ideas">
+            <End Role="Ideas" EntitySet="Ideas" />
+            <End Role="IdeasFieldOfWaters" EntitySet="IdeasFieldOfWaters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IdeaStatus_User" Association="Self.FK_IdeaStatus_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="IdeaStatus" EntitySet="IdeaStatus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Login_User" Association="Self.FK_Login_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Login" EntitySet="Login" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleFeatures_Features" Association="Self.FK_RoleFeatures_Features">
+            <End Role="Features" EntitySet="Features" />
+            <End Role="RoleFeatures" EntitySet="RoleFeatures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleFeatures_Roles" Association="Self.FK_RoleFeatures_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="RoleFeatures" EntitySet="RoleFeatures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Settings_SettingsGroup" Association="Self.FK_Settings_SettingsGroup">
+            <End Role="SettingsGroup" EntitySet="SettingsGroup" />
+            <End Role="Settings" EntitySet="Settings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UnReadDiscussions_Ideas" Association="Self.FK_UnReadDiscussions_Ideas">
+            <End Role="Ideas" EntitySet="Ideas" />
+            <End Role="UnReadDiscussions" EntitySet="UnReadDiscussions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UnReadDiscussions_User" Association="Self.FK_UnReadDiscussions_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UnReadDiscussions" EntitySet="UnReadDiscussions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoles_Roles" Association="Self.FK_UserRoles_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="UserRoles" EntitySet="UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoles_User" Association="Self.FK_UserRoles_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserRoles" EntitySet="UserRoles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="IMS.IdeaPool.Data" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Activity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Key" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="IdeaHistories" Relationship="Self.FK_IdeaHistory_Activity" FromRole="Activity" ToRole="IdeaHistory" />
+        </EntityType>
+        <EntityType Name="Audit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeId" Type="Int32" Nullable="false" />
+          <Property Name="LoginUserId" Type="Int32" Nullable="false" />
+          <Property Name="IdeaId" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="501" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateUserId" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="AuditType" Relationship="Self.FK_Audit_AuditType" FromRole="Audit" ToRole="AuditType" />
+          <NavigationProperty Name="Idea" Relationship="Self.FK_Audit_Ideas" FromRole="Audit" ToRole="Ideas" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Audit_User_LoginUserId" FromRole="Audit" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="Self.FK_Audit_User_UpdateUserId" FromRole="Audit" ToRole="User" />
+        </EntityType>
+        <EntityType Name="AuditType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Key" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Audits" Relationship="Self.FK_Audit_AuditType" FromRole="AuditType" ToRole="Audit" />
+        </EntityType>
+        <EntityType Name="Discussion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdeaId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Message" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="FileId" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="File" Relationship="Self.FK_Discussion_Files" FromRole="Discussion" ToRole="Files" />
+          <NavigationProperty Name="Idea" Relationship="Self.FK_Discussion_Ideas" FromRole="Discussion" ToRole="Ideas" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Discussion_User" FromRole="Discussion" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Exception">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Message" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CallStack" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserAgent" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ExceptionType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Exceptions_User" FromRole="Exceptions" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Feature">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Key" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Roles" Relationship="Self.RoleFeatures" FromRole="Features" ToRole="Roles" />
+        </EntityType>
+        <EntityType Name="FieldOfWater">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Order" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedByUserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_FieldOfWater_User" FromRole="FieldOfWater" ToRole="User" />
+          <NavigationProperty Name="IdeasFieldOfWaters" Relationship="Self.FK_IdeasFieldOfWaters_FieldOfWater" FromRole="FieldOfWater" ToRole="IdeasFieldOfWaters" />
+        </EntityType>
+        <EntityType Name="File">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ContentType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Content" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="Thumbnail" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="SizeInKb" Type="Double" Nullable="false" />
+          <Property Name="UniqueID" Type="Guid" Nullable="false" />
+          <Property Name="IdeaId" Type="Int32" Nullable="false" />
+          <Property Name="IsUploadedViaDiscussions" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Discussions" Relationship="Self.FK_Discussion_Files" FromRole="Files" ToRole="Discussion" />
+          <NavigationProperty Name="Idea" Relationship="Self.FK_Files_Ideas" FromRole="Files" ToRole="Ideas" />
+        </EntityType>
+        <EntityType Name="ForgotPassword">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Token" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ExpiryDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="User" Relationship="Self.FK_ForgotPassword_User" FromRole="ForgotPassword" ToRole="User" />
+        </EntityType>
+        <EntityType Name="IdeaHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdeaId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="ActivityId" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Activity" Relationship="Self.FK_IdeaHistory_Activity" FromRole="IdeaHistory" ToRole="Activity" />
+          <NavigationProperty Name="Idea" Relationship="Self.FK_IdeaHistory_Ideas" FromRole="IdeaHistory" ToRole="Ideas" />
+          <NavigationProperty Name="User" Relationship="Self.FK_IdeaHistory_User" FromRole="IdeaHistory" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Idea">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UniqueId" Type="Guid" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HtmlContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PlainContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdeaStatusId" Type="Int32" Nullable="false" />
+          <Property Name="IsDraft" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Audits" Relationship="Self.FK_Audit_Ideas" FromRole="Ideas" ToRole="Audit" />
+          <NavigationProperty Name="Discussions" Relationship="Self.FK_Discussion_Ideas" FromRole="Ideas" ToRole="Discussion" />
+          <NavigationProperty Name="Files" Relationship="Self.FK_Files_Ideas" FromRole="Ideas" ToRole="Files" />
+          <NavigationProperty Name="IdeaHistories" Relationship="Self.FK_IdeaHistory_Ideas" FromRole="Ideas" ToRole="IdeaHistory" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Ideas_User" FromRole="Ideas" ToRole="User" />
+          <NavigationProperty Name="IdeasFieldOfWaters" Relationship="Self.FK_IdeasFieldOfWaters_Ideas" FromRole="Ideas" ToRole="IdeasFieldOfWaters" />
+          <NavigationProperty Name="UnReadDiscussions" Relationship="Self.FK_UnReadDiscussions_Ideas" FromRole="Ideas" ToRole="UnReadDiscussions" />
+          <NavigationProperty Name="IdeaStatus" Relationship="IMS.IdeaPool.Data.FK_Ideas_IdeaStatus" FromRole="Idea" ToRole="IdeaStatus" />
+        </EntityType>
+        <EntityType Name="IdeasFieldOfWater">
+          <Key>
+            <PropertyRef Name="IdeaId" />
+            <PropertyRef Name="FieldOfWaterId" />
+          </Key>
+          <Property Name="IdeaId" Type="Int32" Nullable="false" />
+          <Property Name="FieldOfWaterId" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="FieldOfWater" Relationship="Self.FK_IdeasFieldOfWaters_FieldOfWater" FromRole="IdeasFieldOfWaters" ToRole="FieldOfWater" />
+          <NavigationProperty Name="Idea" Relationship="Self.FK_IdeasFieldOfWaters_Ideas" FromRole="IdeasFieldOfWaters" ToRole="Ideas" />
+        </EntityType>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastLogin" Type="DateTime" Precision="3" />
+          <Property Name="IsActivated" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Login_User" FromRole="Login" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Key" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Features" Relationship="Self.RoleFeatures" FromRole="Roles" ToRole="Features" />
+          <NavigationProperty Name="Users" Relationship="Self.UserRoles" FromRole="Roles" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Setting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Key" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Value" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GroupId" Type="Int32" Nullable="false" />
+          <Property Name="Limit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SettingsGroup" Relationship="Self.FK_Settings_SettingsGroup" FromRole="Settings" ToRole="SettingsGroup" />
+        </EntityType>
+        <EntityType Name="SettingsGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Key" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Settings" Relationship="Self.FK_Settings_SettingsGroup" FromRole="SettingsGroup" ToRole="Settings" />
+        </EntityType>
+        <EntityType Name="UnReadDiscussion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="IdeaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Idea" Relationship="Self.FK_UnReadDiscussions_Ideas" FromRole="UnReadDiscussions" ToRole="Ideas" />
+          <NavigationProperty Name="User" Relationship="Self.FK_UnReadDiscussions_User" FromRole="UnReadDiscussions" ToRole="User" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Company" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsSubscriptionEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Audits" Relationship="Self.FK_Audit_User_LoginUserId" FromRole="User" ToRole="Audit" />
+          <NavigationProperty Name="Audits1" Relationship="Self.FK_Audit_User_UpdateUserId" FromRole="User" ToRole="Audit" />
+          <NavigationProperty Name="Discussions" Relationship="Self.FK_Discussion_User" FromRole="User" ToRole="Discussion" />
+          <NavigationProperty Name="Exceptions" Relationship="Self.FK_Exceptions_User" FromRole="User" ToRole="Exceptions" />
+          <NavigationProperty Name="FieldOfWaters" Relationship="Self.FK_FieldOfWater_User" FromRole="User" ToRole="FieldOfWater" />
+          <NavigationProperty Name="ForgotPassword" Relationship="Self.FK_ForgotPassword_User" FromRole="User" ToRole="ForgotPassword" />
+          <NavigationProperty Name="IdeaHistories" Relationship="Self.FK_IdeaHistory_User" FromRole="User" ToRole="IdeaHistory" />
+          <NavigationProperty Name="Ideas" Relationship="Self.FK_Ideas_User" FromRole="User" ToRole="Ideas" />
+          <NavigationProperty Name="Login" Relationship="Self.FK_Login_User" FromRole="User" ToRole="Login" />
+          <NavigationProperty Name="UnReadDiscussions" Relationship="Self.FK_UnReadDiscussions_User" FromRole="User" ToRole="UnReadDiscussions" />
+          <NavigationProperty Name="Roles" Relationship="Self.UserRoles" FromRole="User" ToRole="Roles" />
+          <NavigationProperty Name="IdeaStatus" Relationship="IMS.IdeaPool.Data.FK_IdeaStatus_User" FromRole="User" ToRole="IdeaStatus" />
+        </EntityType>
+        <Association Name="FK_IdeaHistory_Activity">
+          <End Role="Activity" Type="Self.Activity" Multiplicity="1" />
+          <End Role="IdeaHistory" Type="Self.IdeaHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Activity">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="IdeaHistory">
+              <PropertyRef Name="ActivityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Audit_AuditType">
+          <End Role="AuditType" Type="Self.AuditType" Multiplicity="1" />
+          <End Role="Audit" Type="Self.Audit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AuditType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Audit">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Audit_Ideas">
+          <End Role="Ideas" Type="Self.Idea" Multiplicity="0..1" />
+          <End Role="Audit" Type="Self.Audit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ideas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Audit">
+              <PropertyRef Name="IdeaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Audit_User_LoginUserId">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Audit" Type="Self.Audit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Audit">
+              <PropertyRef Name="LoginUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Audit_User_UpdateUserId">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Audit" Type="Self.Audit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Audit">
+              <PropertyRef Name="UpdateUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Discussion_Files">
+          <End Role="Files" Type="Self.File" Multiplicity="0..1" />
+          <End Role="Discussion" Type="Self.Discussion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Files">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Discussion">
+              <PropertyRef Name="FileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Discussion_Ideas">
+          <End Role="Ideas" Type="Self.Idea" Multiplicity="1" />
+          <End Role="Discussion" Type="Self.Discussion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ideas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Discussion">
+              <PropertyRef Name="IdeaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Discussion_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Discussion" Type="Self.Discussion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Discussion">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Exceptions_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Exceptions" Type="Self.Exception" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Exceptions">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FieldOfWater_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="FieldOfWater" Type="Self.FieldOfWater" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FieldOfWater">
+              <PropertyRef Name="CreatedByUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IdeasFieldOfWaters_FieldOfWater">
+          <End Role="FieldOfWater" Type="Self.FieldOfWater" Multiplicity="1" />
+          <End Role="IdeasFieldOfWaters" Type="Self.IdeasFieldOfWater" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FieldOfWater">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="IdeasFieldOfWaters">
+              <PropertyRef Name="FieldOfWaterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Files_Ideas">
+          <End Role="Ideas" Type="Self.Idea" Multiplicity="1" />
+          <End Role="Files" Type="Self.File" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ideas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Files">
+              <PropertyRef Name="IdeaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ForgotPassword_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="ForgotPassword" Type="Self.ForgotPassword" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ForgotPassword">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IdeaHistory_Ideas">
+          <End Role="Ideas" Type="Self.Idea" Multiplicity="1" />
+          <End Role="IdeaHistory" Type="Self.IdeaHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ideas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="IdeaHistory">
+              <PropertyRef Name="IdeaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IdeaHistory_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="IdeaHistory" Type="Self.IdeaHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="IdeaHistory">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ideas_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Ideas" Type="Self.Idea" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ideas">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IdeasFieldOfWaters_Ideas">
+          <End Role="Ideas" Type="Self.Idea" Multiplicity="1" />
+          <End Role="IdeasFieldOfWaters" Type="Self.IdeasFieldOfWater" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ideas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="IdeasFieldOfWaters">
+              <PropertyRef Name="IdeaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UnReadDiscussions_Ideas">
+          <End Role="Ideas" Type="Self.Idea" Multiplicity="1" />
+          <End Role="UnReadDiscussions" Type="Self.UnReadDiscussion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ideas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UnReadDiscussions">
+              <PropertyRef Name="IdeaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Login_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Login" Type="Self.Login" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Login">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Settings_SettingsGroup">
+          <End Role="SettingsGroup" Type="Self.SettingsGroup" Multiplicity="1" />
+          <End Role="Settings" Type="Self.Setting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SettingsGroup">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Settings">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UnReadDiscussions_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UnReadDiscussions" Type="Self.UnReadDiscussion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UnReadDiscussions">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RoleFeatures">
+          <End Role="Features" Type="Self.Feature" Multiplicity="*" />
+          <End Role="Roles" Type="Self.Role" Multiplicity="*" />
+        </Association>
+        <Association Name="UserRoles">
+          <End Role="Roles" Type="Self.Role" Multiplicity="*" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="IdeaPoolEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Activities" EntityType="Self.Activity" />
+          <EntitySet Name="Audits" EntityType="Self.Audit" />
+          <EntitySet Name="AuditTypes" EntityType="Self.AuditType" />
+          <EntitySet Name="Discussions" EntityType="Self.Discussion" />
+          <EntitySet Name="Exceptions" EntityType="Self.Exception" />
+          <EntitySet Name="Features" EntityType="Self.Feature" />
+          <EntitySet Name="FieldOfWaters" EntityType="Self.FieldOfWater" />
+          <EntitySet Name="Files" EntityType="Self.File" />
+          <EntitySet Name="ForgotPasswords" EntityType="Self.ForgotPassword" />
+          <EntitySet Name="IdeaHistories" EntityType="Self.IdeaHistory" />
+          <EntitySet Name="Ideas" EntityType="Self.Idea" />
+          <EntitySet Name="IdeasFieldOfWaters" EntityType="Self.IdeasFieldOfWater" />
+          <EntitySet Name="Logins" EntityType="Self.Login" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="Settings" EntityType="Self.Setting" />
+          <EntitySet Name="SettingsGroups" EntityType="Self.SettingsGroup" />
+          <EntitySet Name="UnReadDiscussions" EntityType="Self.UnReadDiscussion" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK_IdeaHistory_Activity" Association="Self.FK_IdeaHistory_Activity">
+            <End Role="Activity" EntitySet="Activities" />
+            <End Role="IdeaHistory" EntitySet="IdeaHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Audit_AuditType" Association="Self.FK_Audit_AuditType">
+            <End Role="AuditType" EntitySet="AuditTypes" />
+            <End Role="Audit" EntitySet="Audits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Audit_Ideas" Association="Self.FK_Audit_Ideas">
+            <End Role="Ideas" EntitySet="Ideas" />
+            <End Role="Audit" EntitySet="Audits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Audit_User_LoginUserId" Association="Self.FK_Audit_User_LoginUserId">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Audit" EntitySet="Audits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Audit_User_UpdateUserId" Association="Self.FK_Audit_User_UpdateUserId">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Audit" EntitySet="Audits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Discussion_Files" Association="Self.FK_Discussion_Files">
+            <End Role="Files" EntitySet="Files" />
+            <End Role="Discussion" EntitySet="Discussions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Discussion_Ideas" Association="Self.FK_Discussion_Ideas">
+            <End Role="Ideas" EntitySet="Ideas" />
+            <End Role="Discussion" EntitySet="Discussions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Discussion_User" Association="Self.FK_Discussion_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Discussion" EntitySet="Discussions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Exceptions_User" Association="Self.FK_Exceptions_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Exceptions" EntitySet="Exceptions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FieldOfWater_User" Association="Self.FK_FieldOfWater_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="FieldOfWater" EntitySet="FieldOfWaters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IdeasFieldOfWaters_FieldOfWater" Association="Self.FK_IdeasFieldOfWaters_FieldOfWater">
+            <End Role="FieldOfWater" EntitySet="FieldOfWaters" />
+            <End Role="IdeasFieldOfWaters" EntitySet="IdeasFieldOfWaters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Files_Ideas" Association="Self.FK_Files_Ideas">
+            <End Role="Ideas" EntitySet="Ideas" />
+            <End Role="Files" EntitySet="Files" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ForgotPassword_User" Association="Self.FK_ForgotPassword_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="ForgotPassword" EntitySet="ForgotPasswords" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IdeaHistory_Ideas" Association="Self.FK_IdeaHistory_Ideas">
+            <End Role="Ideas" EntitySet="Ideas" />
+            <End Role="IdeaHistory" EntitySet="IdeaHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IdeaHistory_User" Association="Self.FK_IdeaHistory_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="IdeaHistory" EntitySet="IdeaHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ideas_User" Association="Self.FK_Ideas_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Ideas" EntitySet="Ideas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IdeasFieldOfWaters_Ideas" Association="Self.FK_IdeasFieldOfWaters_Ideas">
+            <End Role="Ideas" EntitySet="Ideas" />
+            <End Role="IdeasFieldOfWaters" EntitySet="IdeasFieldOfWaters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UnReadDiscussions_Ideas" Association="Self.FK_UnReadDiscussions_Ideas">
+            <End Role="Ideas" EntitySet="Ideas" />
+            <End Role="UnReadDiscussions" EntitySet="UnReadDiscussions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Login_User" Association="Self.FK_Login_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Login" EntitySet="Logins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Settings_SettingsGroup" Association="Self.FK_Settings_SettingsGroup">
+            <End Role="SettingsGroup" EntitySet="SettingsGroups" />
+            <End Role="Settings" EntitySet="Settings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UnReadDiscussions_User" Association="Self.FK_UnReadDiscussions_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UnReadDiscussions" EntitySet="UnReadDiscussions" />
+          </AssociationSet>
+          <AssociationSet Name="RoleFeatures" Association="Self.RoleFeatures">
+            <End Role="Features" EntitySet="Features" />
+            <End Role="Roles" EntitySet="Roles" />
+          </AssociationSet>
+          <AssociationSet Name="UserRoles" Association="Self.UserRoles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <EntitySet Name="IdeaStatus" EntityType="IMS.IdeaPool.Data.IdeaStatus" />
+          <AssociationSet Name="FK_Ideas_IdeaStatus" Association="IMS.IdeaPool.Data.FK_Ideas_IdeaStatus">
+            <End Role="IdeaStatus" EntitySet="IdeaStatus" />
+            <End Role="Idea" EntitySet="Ideas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IdeaStatus_User" Association="IMS.IdeaPool.Data.FK_IdeaStatus_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="IdeaStatus" EntitySet="IdeaStatus" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="IdeaStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Key" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Color" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsVisible" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedByUserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Ideas" Relationship="IMS.IdeaPool.Data.FK_Ideas_IdeaStatus" FromRole="IdeaStatus" ToRole="Idea" />
+          <NavigationProperty Name="User" Relationship="IMS.IdeaPool.Data.FK_IdeaStatus_User" FromRole="IdeaStatus" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_Ideas_IdeaStatus">
+          <End Type="IMS.IdeaPool.Data.IdeaStatus" Role="IdeaStatus" Multiplicity="1" />
+          <End Type="IMS.IdeaPool.Data.Idea" Role="Idea" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IdeaStatus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Idea">
+              <PropertyRef Name="IdeaStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IdeaStatus_User">
+          <End Type="IMS.IdeaPool.Data.User" Role="User" Multiplicity="1" />
+          <End Type="IMS.IdeaPool.Data.IdeaStatus" Role="IdeaStatus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="IdeaStatus">
+              <PropertyRef Name="CreatedByUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="IMSIdeaPoolDataStoreContainer" CdmEntityContainer="IdeaPoolEntities">
+          <EntitySetMapping Name="Activities">
+            <EntityTypeMapping TypeName="IMS.IdeaPool.Data.Activity">
+              <MappingFragment StoreEntitySet="Activity">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Key" ColumnName="Key" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Audits">
+            <EntityTypeMapping TypeName="IMS.IdeaPool.Data.Audit">
+              <MappingFragment StoreEntitySet="Audit">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="LoginUserId" ColumnName="LoginUserId" />
+                <ScalarProperty Name="IdeaId" ColumnName="IdeaId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AuditTypes">
+            <EntityTypeMapping TypeName="IMS.IdeaPool.Data.AuditType">
+              <MappingFragment StoreEntitySet="AuditType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Key" ColumnName="Key" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Discussions">
+            <EntityTypeMapping TypeName="IMS.IdeaPool.Data.Discussion">
+              <MappingFragment StoreEntitySet="Discussion">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdeaId" ColumnName="IdeaId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="FileId" ColumnName="FileId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Exceptions">
+            <EntityTypeMapping TypeName="IMS.IdeaPool.Data.Exception">
+              <MappingFragment StoreEntitySet="Exceptions">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="CallStack" ColumnName="CallStack" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UserAgent" ColumnName="UserAgent" />
+                <ScalarProperty Name="ExceptionType" ColumnName="ExceptionType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Features">
+            <EntityTypeMapping TypeName="IMS.IdeaPool.Data.Feature">
+              <MappingFragment StoreEntitySet="Features">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Key" ColumnName="Key" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FieldOfWaters">
+            <EntityTypeMapping TypeName="IMS.IdeaPool.Data.FieldOfWater">
+              <MappingFragment StoreEntitySet="FieldOfWater">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Files">
+            <EntityTypeMapping TypeName="IMS.IdeaPool.Data.File">
+              <MappingFragment StoreEntitySet="Files">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ContentType" ColumnName="ContentType" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Thumbnail" ColumnName="Thumbnail" />
+                <ScalarProperty Name="SizeInKb" ColumnName="SizeInKb" />
+                <ScalarProperty Name="UniqueID" ColumnName="UniqueID" />
+                <ScalarProperty Name="IdeaId" ColumnName="IdeaId" />
+                <ScalarProperty Name="IsUploadedViaDiscussions" ColumnName="IsUploadedViaDiscussions" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ForgotPasswords">
+            <EntityTypeMapping TypeName="IMS.IdeaPool.Data.ForgotPassword">
+              <MappingFragment StoreEntitySet="ForgotPassword">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Token" ColumnName="Token" />
+                <ScalarProperty Name="ExpiryDateTime" ColumnName="ExpiryDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IdeaHistories">
+            <EntityTypeMapping TypeName="IMS.IdeaPool.Data.IdeaHistory">
+              <MappingFragment StoreEntitySet="IdeaHistory">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdeaId" ColumnName="IdeaId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ActivityId" ColumnName="ActivityId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ideas">
+            <EntityTypeMapping TypeName="IMS.IdeaPool.Data.Idea">
+              <MappingFragment StoreEntitySet="Ideas">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UniqueId" ColumnName="UniqueId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="HtmlContent" ColumnName="HtmlContent" />
+                <ScalarProperty Name="PlainContent" ColumnName="PlainContent" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+                <ScalarProperty Name="IdeaStatusId" ColumnName="IdeaStatusId" />
+                <ScalarProperty Name="IsDraft" ColumnName="IsDraft" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IdeasFieldOfWaters">
+            <EntityTypeMapping TypeName="IMS.IdeaPool.Data.IdeasFieldOfWater">
+              <MappingFragment StoreEntitySet="IdeasFieldOfWaters">
+                <ScalarProperty Name="IdeaId" ColumnName="IdeaId" />
+                <ScalarProperty Name="FieldOfWaterId" ColumnName="FieldOfWaterId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Logins">
+            <EntityTypeMapping TypeName="IMS.IdeaPool.Data.Login">
+              <MappingFragment StoreEntitySet="Login">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
+                <ScalarProperty Name="IsActivated" ColumnName="IsActivated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="IMS.IdeaPool.Data.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Key" ColumnName="Key" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Settings">
+            <EntityTypeMapping TypeName="IMS.IdeaPool.Data.Setting">
+              <MappingFragment StoreEntitySet="Settings">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Key" ColumnName="Key" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="Limit" ColumnName="Limit" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SettingsGroups">
+            <EntityTypeMapping TypeName="IMS.IdeaPool.Data.SettingsGroup">
+              <MappingFragment StoreEntitySet="SettingsGroup">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Key" ColumnName="Key" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UnReadDiscussions">
+            <EntityTypeMapping TypeName="IMS.IdeaPool.Data.UnReadDiscussion">
+              <MappingFragment StoreEntitySet="UnReadDiscussions">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="IdeaId" ColumnName="IdeaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="IMS.IdeaPool.Data.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="IsSubscriptionEnabled" ColumnName="IsSubscriptionEnabled" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="RoleFeatures" TypeName="IMS.IdeaPool.Data.RoleFeatures" StoreEntitySet="RoleFeatures">
+            <EndProperty Name="Features">
+              <ScalarProperty Name="Id" ColumnName="FeatureId" />
+            </EndProperty>
+            <EndProperty Name="Roles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="UserRoles" TypeName="IMS.IdeaPool.Data.UserRoles" StoreEntitySet="UserRoles">
+            <EndProperty Name="Roles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="User">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="IdeaStatus">
+            <EntityTypeMapping TypeName="IMS.IdeaPool.Data.IdeaStatus">
+              <MappingFragment StoreEntitySet="IdeaStatus">
+                <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Key" ColumnName="Key" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

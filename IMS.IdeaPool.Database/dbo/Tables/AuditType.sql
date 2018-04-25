@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[AuditType]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+	[Key] NVARCHAR(50) NOT NULL,
+    [Description] NVARCHAR(50) NOT NULL    
+)

@@ -1,0 +1,9 @@
+C:\Idea Generator\Code\Hynds.IdeaGenerator.Web.V2\Hynds.IdeaGenerator.Database\bin\Debug\Hynds.IdeaGenerator.Database.dacpac
+C:\Idea Generator\Code\Hynds.IdeaGenerator.Web.V2\Hynds.IdeaGenerator.Database\bin\Debug\Hynds.IdeaGenerator.Database.dll
+C:\Idea Generator\Code\Hynds.IdeaGenerator.Web.V2\Hynds.IdeaGenerator.Database\bin\Debug\Hynds.IdeaGenerator.Database.pdb
+C:\Idea Generator\Code\Hynds.IdeaGenerator.Web.V2\Hynds.IdeaGenerator.Database\obj\Debug\Hynds.IdeaGenerator.Database.dll
+C:\Idea Generator\Code\Hynds.IdeaGenerator.Web.V2\Hynds.IdeaGenerator.Database\obj\Debug\Hynds.IdeaGenerator.Database.pdb
+C:\Idea Generator\Code\Hynds.IdeaGenerator.Web.V2\Hynds.IdeaGenerator.Database\obj\Debug\Model.xml
+C:\Idea Generator\Code\Hynds.IdeaGenerator.Web.V2\Hynds.IdeaGenerator.Database\obj\Debug\refactor.xml
+C:\Idea Generator\Code\Hynds.IdeaGenerator.Web.V2\Hynds.IdeaGenerator.Database\obj\Debug\postdeploy.sql
+C:\Idea Generator\Code\Hynds.IdeaGenerator.Web.V2\Hynds.IdeaGenerator.Database\obj\Debug\predeploy.sql

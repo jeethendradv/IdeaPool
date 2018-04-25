@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="IdeaGeneratorModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="IdeaGeneratorEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Logins" EntityType="IdeaGeneratorModel.Login" />
+    <EntitySet Name="Users" EntityType="IdeaGeneratorModel.User" />
+    <AssociationSet Name="FK_Login_User" Association="IdeaGeneratorModel.FK_Login_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Login" EntitySet="Logins" />
+    </AssociationSet>
+    <EntitySet Name="FieldOfWaters" EntityType="IdeaGeneratorModel.FieldOfWater" />
+    <EntitySet Name="Ideas" EntityType="IdeaGeneratorModel.Idea" />
+    <EntitySet Name="Images" EntityType="IdeaGeneratorModel.Image" />
+    <AssociationSet Name="FK_Ideas_FieldOfWater" Association="IdeaGeneratorModel.FK_Ideas_FieldOfWater">
+      <End Role="FieldOfWater" EntitySet="FieldOfWaters" />
+      <End Role="Idea" EntitySet="Ideas" />
+    </AssociationSet>
+    <AssociationSet Name="UserIdeas" Association="IdeaGeneratorModel.UserIdeas">
+      <End Role="Idea" EntitySet="Ideas" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Login">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastLogin" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="User" Relationship="IdeaGeneratorModel.FK_Login_User" FromRole="Login" ToRole="User" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Company" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="IsSubscriptionEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Login" Relationship="IdeaGeneratorModel.FK_Login_User" FromRole="User" ToRole="Login" />
+    <NavigationProperty Name="Ideas" Relationship="IdeaGeneratorModel.UserIdeas" FromRole="User" ToRole="Idea" />
+  </EntityType>
+  <Association Name="FK_Login_User">
+    <End Type="IdeaGeneratorModel.User" Role="User" Multiplicity="1" />
+    <End Type="IdeaGeneratorModel.Login" Role="Login" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Login">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="FieldOfWater">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Ideas" Relationship="IdeaGeneratorModel.FK_Ideas_FieldOfWater" FromRole="FieldOfWater" ToRole="Idea" />
+  </EntityType>
+  <EntityType Name="Idea">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="FieldOfWaterId" Type="Int32" Nullable="false" />
+    <Property Name="Content" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsDraft" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="FieldOfWater" Relationship="IdeaGeneratorModel.FK_Ideas_FieldOfWater" FromRole="Idea" ToRole="FieldOfWater" />
+    <NavigationProperty Name="Users" Relationship="IdeaGeneratorModel.UserIdeas" FromRole="Idea" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Image">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ContentType" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Content" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_Ideas_FieldOfWater">
+    <End Type="IdeaGeneratorModel.FieldOfWater" Role="FieldOfWater" Multiplicity="1" />
+    <End Type="IdeaGeneratorModel.Idea" Role="Idea" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FieldOfWater">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Idea">
+        <PropertyRef Name="FieldOfWaterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserIdeas">
+    <End Type="IdeaGeneratorModel.Idea" Role="Idea" Multiplicity="*" />
+    <End Type="IdeaGeneratorModel.User" Role="User" Multiplicity="*" />
+  </Association>
+</Schema>

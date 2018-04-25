@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[Activity]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [Key] VARCHAR(50) NOT NULL, 
+    [Name] VARCHAR(50) NOT NULL
+)

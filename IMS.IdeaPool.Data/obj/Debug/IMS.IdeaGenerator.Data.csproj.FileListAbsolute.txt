@@ -1,0 +1,13 @@
+H:\Projects\i-Gen\Code\Hynds.IdeaGenerator.Data\obj\Debug\IMS.IdeaGenerator.Data.csprojResolveAssemblyReference.cache
+H:\Projects\i-Gen\Code\Hynds.IdeaGenerator.Data\obj\Debug\IMS.IdeaGenerator.Data.csproj.CoreCompileInputs.cache
+H:\Projects\i-Gen\Code\Hynds.IdeaGenerator.Data\bin\Debug\IMS.IdeaGenerator.Data.dll.config
+H:\Projects\i-Gen\Code\Hynds.IdeaGenerator.Data\bin\Debug\IMS.IdeaGenerator.Data.dll
+H:\Projects\i-Gen\Code\Hynds.IdeaGenerator.Data\bin\Debug\IMS.IdeaGenerator.Data.pdb
+H:\Projects\i-Gen\Code\Hynds.IdeaGenerator.Data\bin\Debug\EntityFramework.dll
+H:\Projects\i-Gen\Code\Hynds.IdeaGenerator.Data\bin\Debug\EntityFramework.SqlServer.dll
+H:\Projects\i-Gen\Code\Hynds.IdeaGenerator.Data\bin\Debug\IMS.IdeaGenerator.DataObjects.dll
+H:\Projects\i-Gen\Code\Hynds.IdeaGenerator.Data\bin\Debug\IMS.IdeaGenerator.DataObjects.pdb
+H:\Projects\i-Gen\Code\Hynds.IdeaGenerator.Data\bin\Debug\EntityFramework.xml
+H:\Projects\i-Gen\Code\Hynds.IdeaGenerator.Data\bin\Debug\EntityFramework.SqlServer.xml
+H:\Projects\i-Gen\Code\Hynds.IdeaGenerator.Data\obj\Debug\IMS.IdeaGenerator.Data.dll
+H:\Projects\i-Gen\Code\Hynds.IdeaGenerator.Data\obj\Debug\IMS.IdeaGenerator.Data.pdb

@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Idea Generator</title>
+    @Styles.Render("~/Content/css")
+</head>
+<body>
+    <div id="root">
+        <nav class="navbar navbar-inverse">
+            <div class="container">
+
+                <div class="navbar-branding" id="branding">
+                    <a href="#"><img class="preload-me retinized" alt="Hynds Pipe Systems Ltd" src="~/Content/Images/Logo.png"></a>
+                </div>
+                <div id="menu"></div>                
+            </div>
+        </nav>        
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer class="text-center">
+                <p>&copy; @DateTime.Now.Year - Hynds Group</p>
+            </footer>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/JavascriptLibraries")
+    @Scripts.Render("~/bundles/applicationComponents")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

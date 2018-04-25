@@ -1,0 +1,15 @@
+C:\Idea Generator\Code\Hynds.IdeaGenerator.Web.V2\Hynds.IdeaGenerator.Notification\bin\Debug\Hynds.IdeaGenerator.Notification.dll
+C:\Idea Generator\Code\Hynds.IdeaGenerator.Web.V2\Hynds.IdeaGenerator.Notification\bin\Debug\Hynds.IdeaGenerator.Notification.pdb
+C:\Idea Generator\Code\Hynds.IdeaGenerator.Web.V2\Hynds.IdeaGenerator.Notification\bin\Debug\AngleSharp.dll
+C:\Idea Generator\Code\Hynds.IdeaGenerator.Web.V2\Hynds.IdeaGenerator.Notification\bin\Debug\Hynds.IdeaGenerator.DataObjects.dll
+C:\Idea Generator\Code\Hynds.IdeaGenerator.Web.V2\Hynds.IdeaGenerator.Notification\bin\Debug\PreMailer.Net.dll
+C:\Idea Generator\Code\Hynds.IdeaGenerator.Web.V2\Hynds.IdeaGenerator.Notification\bin\Debug\RazorEngine.dll
+C:\Idea Generator\Code\Hynds.IdeaGenerator.Web.V2\Hynds.IdeaGenerator.Notification\bin\Debug\System.Web.Razor.dll
+C:\Idea Generator\Code\Hynds.IdeaGenerator.Web.V2\Hynds.IdeaGenerator.Notification\bin\Debug\Hynds.IdeaGenerator.DataObjects.pdb
+C:\Idea Generator\Code\Hynds.IdeaGenerator.Web.V2\Hynds.IdeaGenerator.Notification\bin\Debug\AngleSharp.xml
+C:\Idea Generator\Code\Hynds.IdeaGenerator.Web.V2\Hynds.IdeaGenerator.Notification\bin\Debug\RazorEngine.xml
+C:\Idea Generator\Code\Hynds.IdeaGenerator.Web.V2\Hynds.IdeaGenerator.Notification\bin\Debug\System.Web.Razor.xml
+C:\Idea Generator\Code\Hynds.IdeaGenerator.Web.V2\Hynds.IdeaGenerator.Notification\obj\Debug\Hynds.IdeaGenerator.Notification.csprojResolveAssemblyReference.cache
+C:\Idea Generator\Code\Hynds.IdeaGenerator.Web.V2\Hynds.IdeaGenerator.Notification\obj\Debug\Hynds.IdeaGenerator.Notification.csproj.CoreCompileInputs.cache
+C:\Idea Generator\Code\Hynds.IdeaGenerator.Web.V2\Hynds.IdeaGenerator.Notification\obj\Debug\Hynds.IdeaGenerator.Notification.dll
+C:\Idea Generator\Code\Hynds.IdeaGenerator.Web.V2\Hynds.IdeaGenerator.Notification\obj\Debug\Hynds.IdeaGenerator.Notification.pdb
